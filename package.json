@@ -25,6 +25,7 @@
     "filter",
     "ajax"
   ],
+  "repository": "https://github.com/Asvae/vue-filter-block.git",
   "author": "Yauheni Prakopchyk",
   "license": "MIT"
 }
