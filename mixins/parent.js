@@ -65,7 +65,8 @@ module.exports = {
             setTimeout(function () {
                 this.filters.toUpdate = false
                 this.saveFilters()
-                this.$emit('filters-formed', this.$options.filters.data)
+                var filters = _.clone(this.$options.filters.data)
+                this.$emit('filters-formed', filters)
             }.bind(this), this.$options.filters.timeout)
         },
         loadFilters: function () {

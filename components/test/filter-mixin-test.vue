@@ -1,7 +1,3 @@
-<style>
-
-</style>
-
 <template>
     <select v-model="filter.editor" v-for="editor in editors">
         <option :value="editor.id" v-text="editor.name"></option>
@@ -106,10 +102,9 @@
     <div class="row">
         <div class="col-sm-4">
             <div class="form-group">
-                <label>Column sorter</label>
-                <vm-sorting-order-filter
-                        name="column-1"
-                ></vm-sorting-order-filter>
+                <vm-sorting-order-filter name="column-1">
+                    Column sorter
+                </vm-sorting-order-filter>
             </div>
         </div>
         <pre class="col-sm-4">
@@ -126,7 +121,9 @@
     </div>
 
     <div class="panel panel-default">
-        <div class="panel-heading">Summary of all the filters (that stuff goes to request).</div>
+        <div class="panel-heading">Summary of all the filters (that JSON goes
+            into request).
+        </div>
         <div class="panel-body">
 
             <div class="row">
@@ -147,9 +144,8 @@
                     </button>
                 </div>
                 <div class="col-md-10">
-                    <pre v-text="filters.data" style="height: 100%"></pre>
+                    <pre v-text="filters.data | json" style="margin: 0"></pre>
                 </div>
-
             </div>
 
         </div>
@@ -158,14 +154,20 @@
 </template>
 
 <script>
+    var _ = require('lodash')
+
     export default {
+        filters: {
+            timeout: 300,
+            storageName: 'filter-mixin-test',
+        },
         mixins: [
             require('./../../mixins/parent'),
         ],
         data: function () {
             return {
                 filters: {
-                    data: ''
+                    data: {}
                 }
             }
         },
@@ -177,11 +179,8 @@
         },
         events: {
             'filters-formed': function (filters) {
-                this.filters.data = JSON.stringify(filters)
+                this.filters.data = filters
             }
-        },
-        filters: {
-            storageName: 'filter-mixin-test',
         }
     }
 </script>
