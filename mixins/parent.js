@@ -74,6 +74,10 @@ module.exports = {
         },
         saveFilters: function () {
             storage.setValue(this.$options.filters.storageName, this.$options.filters.data)
-        }
+        },
+        loadState: function (state){
+            this.$options.filters.data = {}
+            this.$broadcast('set-filter', state)
+        },
     },
 }
