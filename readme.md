@@ -1,6 +1,6 @@
 # Vue Filter Block
 Bundle of several mixins and coomponents aimed to simplify
-table sorting in vue.js applications. Take a look at the [demo](asva.by/vue-filter-block/demo-page.html).
+table sorting in vue.js applications. Take a look at the [demo](http://asva.by/vue-filter-block/demo-page.html).
 
 ## Features
 1. No duplication (you set filters only in template).
