@@ -5,9 +5,14 @@ table sorting in vue.js applications. Take a look at the [demo](http://asva.by/v
 ## Features
 1. No duplication (you set filters only in template).
 2. State support (local storage).
-..* Easily extensible to multiple states.
-..* No worries about versioning.
+ * Easily extensible to multiple states.
+ * No worries about versioning.
 3. Throttling.
+
+### Installing
+```
+npm install vue-filter-block
+```
 
 ## Getting Started
 As it's not a library, you don't have to install a thing.
@@ -50,12 +55,6 @@ Take a look into [components/filters](components/filters) for usage hints.
 Required **npm** packages:
 * `vue`
 * `vueify`
-* `browserify`
-
-### Installing
-```
-npm install vue-filter-block
-```
 
 ## Contributing
 1. Fork it!
