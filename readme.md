@@ -4,9 +4,7 @@ table sorting in vue.js applications. Take a look at the [demo](http://asva.by/v
 
 ## Features
 1. No duplication (you set filters only in template).
-2. State support (local storage).
- * Easily extensible to multiple states.
- * No worries about versioning.
+2. State support (local storage). Version safe, extensible to multiple states.
 3. Throttling.
 
 ### Installing
