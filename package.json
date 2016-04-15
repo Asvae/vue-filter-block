@@ -1,6 +1,6 @@
 {
   "name": "vue-filter-block",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Decoupled filter block for vue.js. Mixins and example components",
   "main": "index.js",
   "scripts": {
