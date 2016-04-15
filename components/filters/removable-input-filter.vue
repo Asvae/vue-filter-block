@@ -10,7 +10,6 @@
 <script>
     module.exports = {
         props: {
-            value: {default: ''},
             type: {default: 'text'},
         },
         mixins: [
