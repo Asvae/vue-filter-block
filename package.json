@@ -1,5 +1,5 @@
 {
-  "name": "vue-filter-block",
+  "name": "asva-vue-filters",
   "version": "0.1.7",
   "description": "Decoupled filter block for vue.js. Mixins and example components",
   "main": "index.js",
@@ -26,7 +26,7 @@
     "filter",
     "ajax"
   ],
-  "repository": "https://github.com/Asvae/vue-filter-block.git",
+  "repository": "https://github.com/Asvae/vue-filters.git",
   "author": "Yauheni Prakopchyk",
   "license": "MIT"
 }
