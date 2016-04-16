@@ -3,8 +3,7 @@
 </template>
 
 <script>
-
-    export default {
+    module.exports = {
         components: {
             vmPaginator: require('./../other/paginator.vue'),
         },
