@@ -1,6 +1,6 @@
 {
   "name": "asva-vue-filters",
-  "version": "0.1.7",
+  "version": "0.1.8",
   "description": "Decoupled filter block for vue.js. Mixins and example components",
   "main": "index.js",
   "scripts": {
