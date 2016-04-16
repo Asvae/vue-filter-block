@@ -1,16 +1,15 @@
 import Vue from 'vue'
+Vue.use(require('asva-vue-modules'))
 
-window.addEventListener('load', function () {
-    new Vue({
-        el: 'body',
-        components: {
-            vmFilterMixinTest: require('./../components/test/filter-mixin-test.vue'),
-        },
-        data: function () {
-            return {some: 'some1'}
-        },
-    })
-})
+var module = {
+    components: {
+        vmFilterMixinTest: require('./../components/test/filter-mixin-test.vue'),
+    }
+}
+
+Vue.registerModule(module)
+
+new Vue({el: 'body'})
 
 
 

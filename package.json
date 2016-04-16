@@ -4,13 +4,13 @@
   "description": "Decoupled filter block for vue.js. Mixins and example components",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "prepublish": "gulp"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
     "gulp": "^3.8.8"
   },
   "dependencies": {
+    "asva-vue-modules": "^0.0.6",
     "bootstrap-sass": "^3.3.6",
     "browserify-shim": "^3.8.12",
     "font-awesome": "^4.5.0",
