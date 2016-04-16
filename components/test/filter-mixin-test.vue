@@ -175,7 +175,7 @@
 <script>
     var _ = require('lodash')
 
-    export default {
+    module.exports = {
         filters: {
             /** Throttling timeout. Default is 500ms. */
             timeout: 300,
@@ -206,7 +206,6 @@
         },
         methods: {
             saveState: function () {
-                console.log(this)
                 this.state = _.clone(this.filters.data)
             }
         }

@@ -2,6 +2,7 @@
     .filter-column-sorter {
         cursor: pointer;
     }
+
     .filter-column-sorter:hover {
         background-color: rgba(51, 122, 183, 0.15);
     }
@@ -16,7 +17,7 @@
 
 <script>
 
-    export default {
+    module.exports = {
         props: {
             value: {default: null},
         },
