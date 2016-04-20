@@ -1,6 +1,6 @@
 {
   "name": "asva-vue-filters",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "description": "Decoupled filter block for vue.js. Mixins and example components",
   "main": "index.js",
   "scripts": {
@@ -21,7 +21,12 @@
   "browserify": {
     "transform": [
       [
-        "babelify", { "presets": ["es2015"] }
+        "babelify",
+        {
+          "presets": [
+            "es2015"
+          ]
+        }
       ],
       [
         "vueify"
