@@ -9,17 +9,17 @@
 </template>
 
 <script>
-    module.exports = {
+    export default {
         props: {
             value: {default: null},
             name: {},
             title: {},
         },
-        ready: function (){
+        ready(){
             this.setDefaultValue()
         },
         watch: {
-            value: function (){
+            value(){
                 this.setDefaultValue()
             }
         },
@@ -28,22 +28,22 @@
              * false -> true -> indeterminate -> false -> ...
              * @param event
              */
-            change: function (event) {
+            change(event) {
                 var checkbox = event.target
 
-                if (checkbox.readOnly){
+                if (checkbox.readOnly) {
                     checkbox.checked = checkbox.readOnly = false
                     this.value = false
                     return
                 }
-                if (! checkbox.checked) {
+                if (!checkbox.checked) {
                     this.value = null
                     checkbox.readOnly = checkbox.indeterminate = true
                     return
                 }
                 this.value = true
             },
-            setDefaultValue: function (){
+            setDefaultValue() {
                 var checkbox = this.$el
                 var value = this.value
 

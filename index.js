@@ -1,7 +1,12 @@
-module.exports = {
+import components from './components/components'
+
+import child from './mixins/child'
+import parent from './mixins/parent'
+
+export default {
     mixins: {
-        child: require('./mixins/child'),
-        parent: require('./mixins/parent'),
+        child,
+        parent,
     },
-    components: require('./components/components'),
+    components,
 }

@@ -7,19 +7,26 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "gulp": "^3.8.8"
-  },
-  "dependencies": {
-    "asva-vue-modules": "^0.0.6",
+    "gulp": "^3.8.8",
     "bootstrap-sass": "^3.3.6",
     "browserify-shim": "^3.8.12",
     "font-awesome": "^4.5.0",
-    "laravel-elixir": "^5.0.0",
-    "laravel-elixir-vueify": "^1.0.2",
+    "laravel-elixir": "^5.0.0"
+  },
+  "dependencies": {
     "lockr": "^0.8.4",
     "lodash": "^4.6.0",
-    "vue": "^1.0.17",
-    "vueify": "^8.3.5"
+    "vue": "^1.0.17"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "babelify", { "presets": ["es2015"] }
+      ],
+      [
+        "vueify"
+      ]
+    ]
   },
   "keywords": [
     "vue.js",

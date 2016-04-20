@@ -17,15 +17,15 @@
 
 <script>
 
-    module.exports = {
+    import childMixin from './../../mixins/child'
+
+    export default {
         props: {
             value: {default: null},
         },
-        mixins: [
-            require('./../../mixins/child')
-        ],
+        mixins: [childMixin],
         watch: {
-            value: function (value) {
+            value (value) {
                 if (value === null) {
                     return this.$dispatch('filter-disabled', this.name)
                 }
@@ -34,7 +34,7 @@
             }
         },
         computed: {
-            iconClass: function () {
+            iconClass () {
                 switch (this.value) {
                     case null:
                         return 'fa-sort'
@@ -47,7 +47,7 @@
         },
         methods: {
             // null -> asc -> desc -> null -> ...
-            toggle: function () {
+            toggle () {
                 switch (this.value) {
                     case null:
                         return this.value = 'asc'

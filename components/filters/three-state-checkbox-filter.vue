@@ -11,20 +11,21 @@
 </template>
 
 <script>
-    module.exports = {
+    import childMixin from './../../mixins/child'
+    import vmThreeStateCheckbox from './../other/three-state-checkbox.vue'
+
+    export default {
         props: {
             value: {default: null},
             class: {},
             title: {},
         },
         components: {
-            vmThreeStateCheckbox: require('./../other/three-state-checkbox.vue'),
+            vmThreeStateCheckbox,
         },
-        mixins: [
-            require('./../../mixins/child')
-        ],
+        mixins: [childMixin],
         watch: {
-            value: function (value) {
+            value (value) {
                 if (value === null) {
                     this.$dispatch('filter-disabled', this.name)
                     return
@@ -33,7 +34,7 @@
             }
         },
         events: {
-            'set-filter': function (filter) {
+            'set-filter' (filter) {
                 if (!(this.name in filter)) {
                     this.value = null
                     return

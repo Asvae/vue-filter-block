@@ -173,19 +173,24 @@
 </template>
 
 <script>
-    var _ = require('lodash')
+    import _ from 'lodash'
 
-    module.exports = {
+    import vmRemovableInputFilter from './../filters/removable-input-filter.vue'
+    import vmThreeStateCheckboxFilter from './../filters/three-state-checkbox-filter.vue'
+    import vmPaginatorFilter from './../filters/paginator-filter.vue'
+    import vmSortingOrderFilter from './../filters/sorting-order-filter.vue'
+
+    import parentMixin from './../../mixins/parent'
+
+    export default {
         filters: {
             /** Throttling timeout. Default is 500ms. */
             timeout: 300,
             /** Local storage name, null means no storage. */
             storageName: 'filter-mixin-test',
         },
-        mixins: [
-            require('./../../mixins/parent'),
-        ],
-        data: function () {
+        mixins: [parentMixin],
+        data() {
             return {
                 filters: {
                     data: {}
@@ -194,18 +199,18 @@
             }
         },
         components: {
-            vmPaginatorFilter: require('./../filters/paginator-filter.vue'),
-            vmRemovableInputFilter: require('./../filters/removable-input-filter.vue'),
-            vmThreeStateCheckboxFilter: require('./../filters/three-state-checkbox-filter.vue'),
-            vmSortingOrderFilter: require('./../filters/sorting-order-filter.vue'),
+            vmPaginatorFilter,
+            vmRemovableInputFilter,
+            vmThreeStateCheckboxFilter,
+            vmSortingOrderFilter,
         },
         events: {
-            'filters-formed': function (filters) {
+            'filters-formed' (filters) {
                 this.filters.data = filters
             }
         },
         methods: {
-            saveState: function () {
+            saveState() {
                 this.state = _.clone(this.filters.data)
             }
         }

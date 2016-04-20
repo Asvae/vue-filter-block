@@ -1,15 +1,10 @@
 import Vue from 'vue'
-Vue.use(require('asva-vue-modules'))
+import asvaVueFilters from './../index'
 
-var module = {
-    components: {
-        vmFilterMixinTest: require('./../components/test/filter-mixin-test.vue'),
-    }
-}
-
-Vue.registerModule(module)
-
-new Vue({el: 'body'})
-
-
-
+new Vue(
+    {
+        el: 'body',
+        components: {
+            vmFilterMixinTest: asvaVueFilters.components.vmFilterMixinTest,
+        }
+    })

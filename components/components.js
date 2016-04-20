@@ -1,16 +1,24 @@
-module.exports = {
-    filters: {
-        vmRemovableInputFilter: require('./filters/removable-input-filter.vue'),
-        vmThreeStateCheckboxFilter: require('./filters/three-state-checkbox-filter.vue'),
-        vmPaginatorFilter: require('./filters/paginator-filter.vue'),
-        vmSortingOrderFilter: require('./filters/sorting-order-filter.vue'),
-    },
-    other: {
-        vmThreeStateCheckbox: require('./other/three-state-checkbox.vue'),
-        vmPaginator: require('./other/paginator.vue'),
-        vmFilterMixinTest: require('./test/filter-mixin-test.vue'),
-    },
-    test: {
-        vmFilterMixinTest: require('./test/filter-mixin-test.vue'),
-    }
+import vmRemovableInputFilter from './filters/removable-input-filter.vue'
+import vmThreeStateCheckboxFilter from './filters/three-state-checkbox-filter.vue'
+import vmPaginatorFilter from './filters/paginator-filter.vue'
+import vmSortingOrderFilter from './filters/sorting-order-filter.vue'
+
+import vmThreeStateCheckbox from './other/three-state-checkbox.vue'
+import vmPaginator from './other/paginator.vue'
+
+import vmFilterMixinTest from './test/filter-mixin-test.vue'
+
+export default {
+    // Filters
+    vmRemovableInputFilter,
+    vmThreeStateCheckboxFilter,
+    vmPaginatorFilter,
+    vmSortingOrderFilter,
+
+    // Not filters.
+    vmThreeStateCheckbox,
+    vmPaginator,
+
+    // Test page
+    vmFilterMixinTest,
 }

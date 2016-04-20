@@ -3,9 +3,12 @@
 </template>
 
 <script>
-    module.exports = {
+    import childMixin from './../../mixins/child'
+    import vmPaginator from './../other/paginator.vue'
+
+    export default {
         components: {
-            vmPaginator: require('./../other/paginator.vue'),
+            vmPaginator
         },
         props: {
             pages: {
@@ -18,9 +21,7 @@
                 type: Number,
             }
         },
-        mixins: [
-            require('./../../mixins/child')
-        ],
+        mixins: [childMixin],
         events: {
             'page-changed': function (page) {
                 if (page === 1) {

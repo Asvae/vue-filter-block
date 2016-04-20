@@ -1,5 +1,5 @@
-var _ = require('lodash')
-var storage = require('./../libs/LocalStorage')
+import _ from 'lodash'
+import storage from './../libs/LocalStorage'
 
 module.exports = {
     filters: {

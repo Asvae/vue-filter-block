@@ -8,16 +8,16 @@
 </template>
 
 <script>
-    module.exports = {
+    import childMixin from './../../mixins/child'
+
+    export default {
         props: {
             type: {default: 'text'},
         },
-        mixins: [
-            require('./../../mixins/child')
-        ],
+        mixins: [childMixin],
         watch: {
-            value: function (value) {
-                if (! value){
+            value (value) {
+                if (!value) {
                     this.$dispatch('filter-disabled', this.name)
                     return
                 }

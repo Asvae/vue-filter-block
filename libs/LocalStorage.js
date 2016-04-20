@@ -1,6 +1,6 @@
-var lockr = require('lockr')
+import lockr from 'lockr'
 
-class LocalStorage {
+export default class LocalStorage {
     
     /**
      * Read variable from local storage
@@ -20,5 +20,3 @@ class LocalStorage {
         return lockr.set(key, value)
     }
 }
-
-module.exports = LocalStorage

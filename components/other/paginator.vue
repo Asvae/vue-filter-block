@@ -1,4 +1,4 @@
-<style>
+<style scoped>
     .paginator .invisible {
         visibility: hidden;
     }
@@ -40,16 +40,17 @@
 </template>
 
 <script>
-    var _ = require('lodash')
 
-    module.exports = {
+    import _ from 'lodash'
+
+    export default {
         watch: {
-            currentPage: function (value) {
+            currentPage (value) {
                 this.$dispatch('page-changed', value)
             }
         },
         events: {
-            reset: function () {
+            reset () {
                 this.currentPage = 1
             }
         },
@@ -69,7 +70,7 @@
             }
         },
         computed: {
-            pagesArray: function () {
+            pagesArray () {
 
                 if (this.pages > this.maxPages) {
                     let maxPadding = Math.floor(this.maxPages / 2)
@@ -84,12 +85,12 @@
             }
         },
         methods: {
-            getClasses: function (page) {
+            getClasses (page) {
                 let total = this.invisible(page) ? 'invisible ' : ''
                 total += page === this.currentPage ? 'btn-success' : 'btn-default'
                 return total
             },
-            invisible: function (page) {
+            invisible (page) {
                 return page < 1 || page > this.pages
             },
         }
