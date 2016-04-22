@@ -1,12 +1,16 @@
-import components from './components/components'
-
-import child from './mixins/child'
-import parent from './mixins/parent'
+import _components from './components/components'
+import _child from './mixins/child'
+import _parent from './mixins/parent'
 
 export default {
     mixins: {
-        child,
-        parent,
+        child: _child,
+        parent: _parent,
     },
-    components,
+    components: _components,
 }
+
+export var childMixin = _child
+export var parentMixin = _parent
+export var components = _components
+

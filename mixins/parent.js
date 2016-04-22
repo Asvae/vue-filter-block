@@ -1,7 +1,7 @@
 import _ from 'lodash'
 import storage from './../libs/LocalStorage'
 
-module.exports = {
+export default {
     filters: {
         data: {},
         storageName: null,
@@ -35,7 +35,7 @@ module.exports = {
         // Override prototype property.
         // Should be done for each component instance.
         this.$options.filters.data = {}
-        
+
         if (this.$options.filters.storageName === null) {
             return
         }
@@ -75,7 +75,7 @@ module.exports = {
         saveFilters: function () {
             storage.setValue(this.$options.filters.storageName, this.$options.filters.data)
         },
-        loadState: function (state){
+        loadState: function (state) {
             this.$options.filters.data = {}
             this.$broadcast('set-filter', state)
         },

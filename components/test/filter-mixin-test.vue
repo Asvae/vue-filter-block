@@ -44,7 +44,7 @@
     &gt;&lt;/vm-paginator-filter&gt;
 &lt;/div&gt;</pre>
             <div class="col-sm-4">
-                <h4>vm-filter-paginator</h4>
+                <h4>vm-paginator-filter</h4>
                 <p>Pagination block. First page means empty filter. Paginator
                     ignores saved state and always defaults to empty.</p>
             </div>
