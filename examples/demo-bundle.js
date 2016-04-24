@@ -1,10 +1,12 @@
 import Vue from 'vue'
-import asvaVueFilters from './../index'
+import vmFilterMixinTest from '../components/test/filter-mixin-test.vue'
+import vmSelect from '../components/other/select.vue'
 
-new Vue(
-    {
-        el: 'body',
-        components: {
-            vmFilterMixinTest: asvaVueFilters.components.vmFilterMixinTest,
-        }
-    })
+Vue.component('vm-select', vmSelect)
+
+new Vue({
+    el: 'body',
+    components: {
+        vmFilterMixinTest
+    }
+})

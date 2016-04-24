@@ -50,6 +50,7 @@ export default {
         resetFilters: function () {
             this.$options.filters.data = {}
             this.setFilters()
+            this.registerUpdate()
         },
 
         /**

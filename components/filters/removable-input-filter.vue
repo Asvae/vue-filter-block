@@ -24,6 +24,12 @@
 
                 this.showParentTheChange()
             }
+        },
+        events: {
+            'set-filter' (filter) {
+                this.setFilter(filter)
+            }
         }
+
     };
 </script>

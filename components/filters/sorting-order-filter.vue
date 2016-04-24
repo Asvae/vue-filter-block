@@ -11,7 +11,7 @@
 <template>
     <span class="filter-column-sorter" @click="toggle">
         <slot></slot>
-        <i class="fa fa-lg" :class="iconClass"></i>
+        <i class="fa" :class="iconClass"></i>
     </span>
 </template>
 
@@ -56,6 +56,11 @@
                     case 'desc':
                         return this.value = null
                 }
+            }
+        },
+        events: {
+            'set-filter' (filter) {
+                this.setFilter(filter)
             }
         }
     }

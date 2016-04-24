@@ -2,6 +2,7 @@ import vmRemovableInputFilter from './filters/removable-input-filter.vue'
 import vmThreeStateCheckboxFilter from './filters/three-state-checkbox-filter.vue'
 import vmPaginatorFilter from './filters/paginator-filter.vue'
 import vmSortingOrderFilter from './filters/sorting-order-filter.vue'
+import vmWrapperFilter from './filters/wrapper-filter.vue'
 
 import vmThreeStateCheckbox from './other/three-state-checkbox.vue'
 import vmPaginator from './other/paginator.vue'
@@ -14,6 +15,7 @@ export default {
     vmThreeStateCheckboxFilter,
     vmPaginatorFilter,
     vmSortingOrderFilter,
+    vmWrapperFilter,
 
     // Not filters.
     vmThreeStateCheckbox,

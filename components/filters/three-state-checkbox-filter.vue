@@ -1,3 +1,12 @@
+<style scoped>
+    span {
+        vertical-align: text-top;
+    }
+    span > input[type="checkbox"] {
+        margin: 0;
+    }
+</style>
+
 <template>
     <span>
         <vm-three-state-checkbox
