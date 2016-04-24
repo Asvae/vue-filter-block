@@ -29,7 +29,7 @@
                 </p>
                 <pre>&lt;label&gt;Check me!
     &lt;vm-three-state-checkbox-filter
-            name=&quot;three-checkbox&quot;
+        name=&quot;three-checkbox&quot;
     &gt;&lt;/vm-three-state-checkbox-filter&gt;
 &lt;/label&gt;</pre>
             </div>
@@ -74,9 +74,9 @@
                     instead of producing empty string.
                 </p>
                 <pre>&lt;vm-removable-input-filter
-            class=&quot;form-control&quot;
-            name=&quot;removable-input&quot;
-    &gt;&lt;/vm-removable-input-filter&gt;</pre>
+    class=&quot;form-control&quot;
+    name=&quot;removable-input&quot;
+&gt;&lt;/vm-removable-input-filter&gt;</pre>
             </div>
         </div>
 
@@ -108,8 +108,8 @@
                     your idea on <a href="https://github.com/Asvae/vue-filters/issues">github issues</a>.
                 </p>
                 <pre>&lt;vm-wrapper-filter
-        content=&quot;vm-select&quot;
-        name=&quot;removable-input&quot;
+    content=&quot;vm-select&quot;
+    name=&quot;removable-input&quot;
 &gt;&lt;/vm-wrapper-filter&gt;</pre>
             </div>
 
