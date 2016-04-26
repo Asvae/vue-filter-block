@@ -121,14 +121,14 @@
                     <small><code>vm-sorting-order-filter</code></small>
                 </h4>
                 <div class="well">
-                    <vm-sorting-order-filter name="column-1">
+                    <vm-sorting-order-filter name="column-sorter">
                         Sort me!
                     </vm-sorting-order-filter>
                 </div>
                 <p>
                     Your common table sorter. Unordered means no filter.
                 </p>
-                <pre>&lt;vm-sorting-order-filter name=&quot;column_1&quot;&gt;
+                <pre>&lt;vm-sorting-order-filter name=&quot;column-sorter&quot;&gt;
     Sort me!
 &lt;/vm-sorting-order-filter&gt;</pre>
             </div>

@@ -13,33 +13,13 @@ npm install vue-filter-block
 ```
 
 ## Getting Started
-As it's not a library, you don't have to install a thing.
-
-Require the package:
+As it's not a plugin, you don't have to install much.
+Just require the package when needed:
 ```
 var vueFilterBlock = require('vue-filter-block')
 ```
-See the structure:
-```
-mixins
-    child
-    parent
-components
-    filters
-        vmRemovableInputFilter
-        vmThreeStateCheckboxFilter
-        vmPaginatorFilter
-        vmSortingOrderFilter
-    other
-        vmThreeStateCheckbox
-        vmPaginator
-        vmFilterMixinTest
-    test
-        vmFilterMixinTest
-```
 
-`vueFilterBlock.mixins.parent` is primary mixin for your parent
-component.
+## Getting started
 
 Let's assume you have a **table** and you want to add
 some **filters** on top of it. To sort by name and date, for instance.
@@ -49,10 +29,33 @@ both **table** and **filters**.
 `vueFilterBlock.mixins.child` is used for every filter in **filters**.
 Take a look into [components/filters](components/filters) for usage hints.
 
+
+## Demo
+Yes, we have a [demo](http://asva.by/vue-filter-block/demo-page.html).
+
+## Components
+In demo every component has line such as `vm-wrapper-filter`. Just convert it
+into camelCase and you have correct import name:
+```
+import {vmWrapperFilter} from 'asva-vue-filters'
+```
+Then you can add component to parent:
+```
+components: {
+    vmWrapperFilter
+}
+```
+
 ### Prerequisities
 Required **npm** packages:
+* `lockr`
+* `lodash`
 * `vue`
-* `vueify`
+
+You probably will also require bundling solution such as webpack or browserify.
+
+## TODO
+1. Filter group.
 
 ## Contributing
 1. Fork it!
@@ -62,7 +65,8 @@ Required **npm** packages:
 5. Submit a pull request.
 
 ## History
-* 15.04.2016: Initial commit
+* 15.04.2016: Initial commit.
+* 26.04.2016: Add filter wrapper component.
 
 ## Credits
 * **Yauheni Prakopchyk** - [Asva](https://github.com/Asvae)

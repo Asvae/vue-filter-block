@@ -3,13 +3,8 @@
         display: flex
     }
 
-    .filter-wrapper > div {
-        cursor: pointer;
-    }
-
     div.disabled {
         opacity: .7;
-        pointer-events: none;
     }
 </style>
 
@@ -57,7 +52,7 @@
                 }
 
                 this.value = filter[this.name]
-                this.showParentTheChange()
+                this.enable()
             }
         },
         methods: {
