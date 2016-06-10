@@ -39,39 +39,29 @@
                 required: true,
             }
         },
-        events: {
-            /**
-             * Allows to set filter from parent
-             * @param filter
-             */
-            'set-filter' (filter) {
-
-                if (!(this.name in filter)) {
-                    this.active = false
-                    return
-                }
-
-                this.value = filter[this.name]
-                this.enable()
-            }
-        },
         methods: {
             disable (){
-                this.$dispatch('filter-disabled', this.name)
+                this.disabled()
                 this.active = false
             },
             enable (){
                 this.active = true
-                this.showParentTheChange()
+                this.changed()
             },
+            setFilters(filters){
+                if (this.name in filters) {
+                    this.value = filters[this.name]
+                    this.enable()
+                } else {
+                    this.active = false
+                }
+            }
         },
         watch: {
             value () {
-                if (!this.active) {
-                    return
+                if (this.active) {
+                    this.changed()
                 }
-
-                this.showParentTheChange()
             }
         }
     }

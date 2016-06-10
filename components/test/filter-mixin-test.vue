@@ -19,6 +19,7 @@
                 <div class="well">
                     <label>Check me!
                         <vm-three-state-checkbox-filter
+                                :bus="filters.bus"
                                 name="three-checkbox"
                         ></vm-three-state-checkbox-filter>
                     </label>
@@ -42,6 +43,7 @@
                 </h4>
                 <div class="well">
                     <vm-paginator-filter
+                            :bus="filters.bus"
                             name="page"
                             :pages="10"
                     ></vm-paginator-filter>
@@ -65,6 +67,7 @@
                 </h4>
                 <div class="well">
                     <vm-removable-input-filter
+                            :bus="filters.bus"
                             class="form-control"
                             name="removable-input"
                     ></vm-removable-input-filter>
@@ -93,6 +96,7 @@
                 </h4>
                 <div class="well">
                     <vm-wrapper-filter
+                            :bus="filters.bus"
                             content="vm-select"
                             name="wrapped-select"
                             value="1"
@@ -105,7 +109,8 @@
                     to modify random component into functional filter.</p>
                 <p>Wrapper binds itself to <code>value</code> property of underlying component.
                     So that property should be defined. If not, better just use mixin. Or maybe post
-                    your idea on <a href="https://github.com/Asvae/vue-filters/issues">github issues</a>.
+                    your idea on <a href="https://github.com/Asvae/vue-filters/issues">github
+                        issues</a>.
                 </p>
                 <pre>&lt;vm-wrapper-filter
     content=&quot;vm-select&quot;
@@ -121,7 +126,7 @@
                     <small><code>vm-sorting-order-filter</code></small>
                 </h4>
                 <div class="well">
-                    <vm-sorting-order-filter name="column-sorter">
+                    <vm-sorting-order-filter :bus="filters.bus" name="column-sorter">
                         Sort me!
                     </vm-sorting-order-filter>
                 </div>
@@ -193,6 +198,7 @@
                         <div class="form-group">
                             <label>Date input</label>
                             <vm-removable-input-filter
+                                    :bus="filters.bus"
                                     class="form-control"
                                     type="date"
                                     name="removable-date"
@@ -208,6 +214,7 @@
 
 <script>
     import _ from 'lodash'
+    import Vue from 'vue'
 
     import vmRemovableInputFilter from './../filters/removable-input-filter.vue'
     import vmThreeStateCheckboxFilter from './../filters/three-state-checkbox-filter.vue'
@@ -233,6 +240,8 @@
                 state: null,
             }
         },
+        ready(){
+        },
         components: {
             vmPaginatorFilter,
             vmRemovableInputFilter,
@@ -240,15 +249,13 @@
             vmSortingOrderFilter,
             vmWrapperFilter,
         },
-        events: {
-            'filters-formed' (filters) {
-                this.filters.data = filters
-            }
-        },
         methods: {
+            filtersFormed(filters) {
+                this.filters.data = filters
+            },
             saveState() {
                 this.state = _.clone(this.filters.data)
-            }
+            },
         }
     }
 </script>

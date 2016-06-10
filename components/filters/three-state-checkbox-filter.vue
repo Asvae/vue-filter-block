@@ -2,6 +2,7 @@
     span {
         vertical-align: text-top;
     }
+
     span > input[type="checkbox"] {
         margin: 0;
     }
@@ -35,22 +36,21 @@
         mixins: [childMixin],
         watch: {
             value (value) {
-                if (value === null) {
-                    this.$dispatch('filter-disabled', this.name)
-                    return
-                }
-                this.showParentTheChange()
+                value !== null
+                        ? this.changed()
+                        : this.disabled()
             }
         },
-        events: {
-            'set-filter' (filter) {
-                if (!(this.name in filter)) {
+        methods: {
+            setFilters (filters){
+                console.log(filters)
+                if (!(this.name in filters)) {
                     this.value = null
                     return
                 }
 
-                this.value = filter[this.name]
-                this.showParentTheChange()
+                this.value = filters[this.name]
+                this.changed()
             }
         },
     };

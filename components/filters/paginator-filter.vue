@@ -1,5 +1,9 @@
 <template>
-    <vm-paginator :pages="pages" :max-pages="maxPages"></vm-paginator>
+    <vm-paginator :pages="pages"
+                  :max-pages="maxPages"
+                  :current-page="value"
+                  @page-changed="pageChanged($arguments[0])"
+    ></vm-paginator>
 </template>
 
 <script>
@@ -11,6 +15,9 @@
             vmPaginator
         },
         props: {
+            value: {
+                default: 1,
+            },
             pages: {
                 required: true,
                 type: Number,
@@ -22,20 +29,13 @@
             }
         },
         mixins: [childMixin],
-        events: {
-            'page-changed': function (page) {
-                if (page === 1) {
-                    this.$dispatch('filter-disabled', this.name)
-                    return
-                }
-
-                var filter = {}
-                filter[this.name] = page
-                this.$dispatch('filter-changed', filter)
+        methods: {
+            pageChanged(page){
+                return (this.value = page) === 1 ? this.disabled() : this.changed()
             },
-            'set-filter': function () {
-                this.$broadcast('reset')
+            setFilter (){
+                this.value = 1
             }
-        }
+        },
     }
 </script>

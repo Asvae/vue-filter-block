@@ -2,40 +2,43 @@
     .paginator .invisible {
         visibility: hidden;
     }
+
     .paginator button {
         width: 3em;
     }
 </style>
 
 <template>
-    <div class="paginator btn-block" v-if="pages > 1">
-        <button type="button"
-                class="btn btn-primary"
-                @click="currentPage = 1"
-                :class="currentPage === 1 ? 'disabled' : ''"
-                v-if="pages > maxPages"
-                v-text="1"
-        >
-        </button>
-        <div class="btn-group">
+    <div class="paginator btn-block">
+        <div v-if="pages > 1">
             <button type="button"
-                    v-for="page in pagesArray"
-                    class="btn"
-                    :class="getClasses(page)"
-                    :disabled="invisible(page)"
-                    @mousedown="currentPage = page"
-                    v-text="invisible(page) ? Math.abs(page - 2) : page"
+                    class="btn btn-primary"
+                    @click="currentPage = 1"
+                    :class="currentPage === 1 ? 'disabled' : ''"
+                    v-if="pages > maxPages"
+                    v-text="1"
+            >
+            </button>
+            <div class="btn-group">
+                <button type="button"
+                        v-for="page in pagesArray"
+                        class="btn"
+                        :class="getClasses(page)"
+                        :disabled="invisible(page)"
+                        @mousedown="currentPage = page"
+                        v-text="invisible(page) ? Math.abs(page - 2) : page"
+                >
+                </button>
+            </div>
+            <button type="button"
+                    class="btn btn-primary"
+                    @click="currentPage = pages"
+                    :class="currentPage === pages ? 'disabled' : ''"
+                    v-if="pages > maxPages"
+                    v-text="pages"
             >
             </button>
         </div>
-        <button type="button"
-                class="btn btn-primary"
-                @click="currentPage = pages"
-                :class="currentPage === pages ? 'disabled' : ''"
-                v-if="pages > maxPages"
-                v-text="pages"
-        >
-        </button>
     </div>
 </template>
 
@@ -46,7 +49,7 @@
     export default {
         watch: {
             currentPage (value) {
-                this.$dispatch('page-changed', value)
+                this.$emit('page-changed', value)
             }
         },
         events: {

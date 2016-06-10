@@ -17,19 +17,8 @@
         mixins: [childMixin],
         watch: {
             value (value) {
-                if (!value) {
-                    this.$dispatch('filter-disabled', this.name)
-                    return
-                }
-
-                this.showParentTheChange()
-            }
-        },
-        events: {
-            'set-filter' (filter) {
-                this.setFilter(filter)
+                value ? this.changed() : this.disabled()
             }
         }
-
     };
 </script>

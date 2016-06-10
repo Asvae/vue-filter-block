@@ -1,4 +1,5 @@
 import _ from 'lodash'
+import Vue from 'vue'
 import storage from './../libs/LocalStorage'
 
 export default {
@@ -11,41 +12,45 @@ export default {
         return {
             filters: {
                 toUpdate: false,
+                bus: new Vue,
             },
         }
     },
     events: {
-        'filter-changed': function (filters) {
-            _.each(filters, function (value, key) {
-                this.$options.filters.data[key] = value
-                this.registerUpdate()
-            }.bind(this))
-        },
-        'filter-disabled': function (key) {
-            delete this.$options.filters.data[key]
-            this.registerUpdate()
-        },
         // 'filters-formed' is triggered when filters are ready to be sent.
     },
     /**
      * We want to check if local storage key is specified.
      * And if yes — load filters from local storage.
      */
-    ready: function () {
+    ready () {
         // Override prototype property.
         // Should be done for each component instance.
         this.$options.filters.data = {}
 
-        if (this.$options.filters.storageName === null) {
-            return
-        }
+        // Register listeners
+        let self = this
+        this.filters.bus.$on('change', function (filters) {
+            _.each(filters, function (value, key) {
+                self.$options.filters.data[key] = value
+                self.registerUpdate()
+            })
+        })
+        this.filters.bus.$on('disable', function (key) {
+            delete self.$options.filters.data[key]
+            self.registerUpdate()
+        })
 
-        this.$broadcast('set-filter', this.loadFilters())
-        return this.registerUpdate()
+        // Inform children if we have filters to share.
+        if (this.$options.filters.storageName !== null) {
+            let savedFilters = storage.getValue(storageName)
+            this.filters.bus.$emit('set-filters', savedFilters)
+            this.registerUpdate()
+        }
     },
     methods: {
         setFilters: function () {
-            this.$broadcast('set-filter', this.$options.filters.data)
+            this.$broadcast('set-filters', this.$options.filters.data)
         },
         resetFilters: function () {
             this.$options.filters.data = {}
@@ -67,18 +72,21 @@ export default {
                 this.filters.toUpdate = false
                 this.saveFilters()
                 var filters = _.clone(this.$options.filters.data)
-                this.$emit('filters-formed', filters)
+                this.filtersFormed(filters)
             }.bind(this), this.$options.filters.timeout)
         },
-        loadFilters: function () {
-            return storage.getValue(this.$options.filters.storageName)
+        filtersFormed (){
+            console.warn('Override the "filtersFormed" method to get updates on filters change. Component name is: ' + this.constructor.name)
         },
-        saveFilters: function () {
+        loadFilters () {
+            return
+        },
+        saveFilters () {
             storage.setValue(this.$options.filters.storageName, this.$options.filters.data)
         },
-        loadState: function (state) {
+        loadState (state) {
             this.$options.filters.data = {}
-            this.$broadcast('set-filter', state)
+            this.filters.bus.$emit('set-filters', state)
         },
     },
 }

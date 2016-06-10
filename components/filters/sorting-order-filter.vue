@@ -26,11 +26,7 @@
         mixins: [childMixin],
         watch: {
             value (value) {
-                if (value === null) {
-                    return this.$dispatch('filter-disabled', this.name)
-                }
-
-                return this.showParentTheChange()
+                value === null ? this.disabled() : this.changed()
             }
         },
         computed: {
@@ -56,12 +52,7 @@
                     case 'desc':
                         return this.value = null
                 }
-            }
+            },
         },
-        events: {
-            'set-filter' (filter) {
-                this.setFilter(filter)
-            }
-        }
     }
 </script>
