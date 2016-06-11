@@ -35,7 +35,7 @@ export default{
         let self = this
 
         this.bus.$on('set-filters', function (filters) {
-            let value = getProperty(this.name, filters)
+            let value = getProperty(self.name, filters)
             self.setFilters(value)
         })
 
