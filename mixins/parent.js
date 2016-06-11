@@ -16,9 +16,6 @@ export default {
             },
         }
     },
-    events: {
-        // 'filters-formed' is triggered when filters are ready to be sent.
-    },
     /**
      * We want to check if local storage key is specified.
      * And if yes — load filters from local storage.
@@ -77,9 +74,6 @@ export default {
         },
         filtersFormed (){
             console.warn('Override the "filtersFormed" method to get updates on filters change. Component name is: ' + this.constructor.name)
-        },
-        loadFilters () {
-            return
         },
         saveFilters () {
             storage.setValue(this.$options.filters.storageName, this.$options.filters.data)

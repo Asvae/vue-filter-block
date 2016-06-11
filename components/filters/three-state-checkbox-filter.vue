@@ -42,13 +42,13 @@
             }
         },
         methods: {
-            setFilters (filters){
-                if (!(this.name in filters)) {
+            setFilters (value){
+                if (value === undefined) {
                     this.value = null
                     return
                 }
 
-                this.value = filters[this.name]
+                this.value = value
                 this.changed()
             }
         },

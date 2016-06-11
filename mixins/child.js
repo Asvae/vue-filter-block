@@ -35,7 +35,8 @@ export default{
         let self = this
 
         this.bus.$on('set-filters', function (filters) {
-            self.setFilters(filters)
+            let value = getProperty(this.name, filters)
+            self.setFilters(value)
         })
 
         this.defaultValue = this.value
@@ -48,14 +49,11 @@ export default{
          * Allows to set filter from parent
          * @param filter
          */
-        setFilters (filters) {
-            let value = getProperty(this.name, filters)
-
+        setFilters (value) {
             if (value === undefined) {
                 this.value = this.defaultValue
                 return
             }
-
             this.value = value
             this.changed()
         },

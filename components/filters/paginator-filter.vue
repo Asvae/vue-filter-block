@@ -33,7 +33,7 @@
             pageChanged(page){
                 return (this.value = page) === 1 ? this.disabled() : this.changed()
             },
-            setFilter (){
+            setFilter (value){
                 this.value = 1
             }
         },

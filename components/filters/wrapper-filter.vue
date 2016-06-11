@@ -48,9 +48,9 @@
                 this.active = true
                 this.changed()
             },
-            setFilters(filters){
-                if (this.name in filters) {
-                    this.value = filters[this.name]
+            setFilters(value){
+                if (value === undefined) {
+                    this.value = value
                     this.enable()
                 } else {
                     this.active = false
