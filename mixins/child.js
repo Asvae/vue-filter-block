@@ -42,21 +42,21 @@ export default{
     },
     methods: {
         getFilterObject () {
-            var filter = {}
-            filter[this.name] = this.value
-            return filter
+            return getObject(this.name, this.value)
         },
         /**
          * Allows to set filter from parent
          * @param filter
          */
         setFilters (filters) {
-            if (!(this.name in filters)) {
+            let value = getProperty(this.name, filters)
+
+            if (value === undefined) {
                 this.value = this.defaultValue
                 return
             }
 
-            this.value = filters[this.name]
+            this.value = value
             this.changed()
         },
         changed (){
@@ -66,4 +66,44 @@ export default{
             this.bus.$emit('disable', this.name)
         }
     }
+}
+
+function getObject(reference, value) {
+    let parts = reference.split('.')
+    let length = parts.length
+    let result = {}
+    let node = result
+
+    for (let i = 0; i < length; i++) {
+        if (i === length - 1) {
+            node[parts[length - 1]] = value
+        } else if (node === result) {
+            node = createProperty(result, parts[i])
+        } else {
+            node = createProperty(node, parts[i])
+        }
+    }
+
+    return result
+}
+
+function getProperty(reference, object) {
+    let parts = reference.split('.')
+    let length = parts.length
+    let property = object[parts[0]]
+
+    for (let i = 1; i < length; i++) {
+        if (!_.isObject(property)) {
+            return property
+        }
+        property = property[parts[i]]
+    }
+
+    return property
+}
+
+function createProperty(object, property) {
+    let node = {}
+    object[property] = node
+    return node
 }

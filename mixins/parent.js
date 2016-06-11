@@ -43,7 +43,7 @@ export default {
 
         // Inform children if we have filters to share.
         if (this.$options.filters.storageName !== null) {
-            let savedFilters = storage.getValue(storageName)
+            let savedFilters = storage.getValue(this.$options.filters.storageName)
             this.filters.bus.$emit('set-filters', savedFilters)
             this.registerUpdate()
         }
