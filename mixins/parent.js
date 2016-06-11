@@ -46,10 +46,10 @@ export default {
         }
     },
     methods: {
-        setFilters: function () {
-            this.$broadcast('set-filters', this.$options.filters.data)
+        setFilters () {
+            this.filters.bus.$emit('set-filters', this.$options.filters.data)
         },
-        resetFilters: function () {
+        resetFilters () {
             this.$options.filters.data = {}
             this.setFilters()
             this.registerUpdate()
@@ -58,7 +58,7 @@ export default {
         /**
          * We will set timeout if function is specified.
          */
-        registerUpdate: function () {
+        registerUpdate () {
             if (this.filters.toUpdate) {
                 return;
             }
