@@ -35,7 +35,6 @@ export default{
         let self = this
 
         this.bus.$on('set-filters', function (filters) {
-            console.log(filters)
             self.setFilters(filters)
         })
 

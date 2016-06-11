@@ -7,29 +7,39 @@ describe("Alert component", function () {
 
     var parent, child;
 
-    var filterChangedSpy = jasmine.createSpy('filter-changed')
-    var filterDisabledSpy = jasmine.createSpy('filter-disabled')
+    var changeCount = 0
+    var lastFilters = {}
+    var disableCount = 0
+    var disableKey = ''
 
-    beforeEach(function() {
+    beforeEach(function () {
 
         var parentComponent = {
             template: `
         <vm-sorting-order-filter
             name="order"
+            :bus="bus"
             v-ref:child
         ></vm-sorting-order-filter>
         `,
+            ready() {
+                this.bus.$on('change', function (filters) {
+                    changeCount += 1
+                    lastFilters = filters
+                })
+                this.bus.$on('disable', function (key) {
+                    disableCount += 1
+                    disableKey = key
+                })
+            },
             components: {
                 vmSortingOrderFilter
             },
-            events: {
-                'filter-changed': function (filters){
-                    filterChangedSpy(filters)
-                },
-                'filter-disabled': function (key){
-                    filterDisabledSpy(key)
-                },
-            }
+            data(){
+                return {
+                    bus: new Vue,
+                }
+            },
         }
 
         parent = new Vue(parentComponent).$mount().$appendTo(document.body)
@@ -51,19 +61,19 @@ describe("Alert component", function () {
         $(child.$el).click()
         Vue.nextTick(function () {
             expect(getClass(child)).toBe('fa fa-sort-asc');
-            expect(filterChangedSpy.calls.count()).toBe(1)
-            expect(filterChangedSpy.calls.mostRecent().args[0]).toEqual({'order': 'asc'})
+            expect(changeCount).toBe(1)
+            expect(lastFilters).toEqual({'order': 'asc'})
             $(child.$el).click()
             Vue.nextTick(function () {
                 expect(getClass(child)).toBe('fa fa-sort-desc')
-                expect(filterChangedSpy.calls.count()).toBe(2)
-                expect(filterChangedSpy.calls.mostRecent().args[0]).toEqual({'order': 'desc'})
+                expect(changeCount).toBe(2)
+                expect(lastFilters).toEqual({'order': 'desc'})
                 $(child.$el).click()
                 Vue.nextTick(function () {
-                    expect(getClass(child)).toBe('fa fa-sort');
-                    expect(filterDisabledSpy.calls.count()).toBe(1)
-                    expect(filterDisabledSpy.calls.mostRecent().args[0]).toBe('order')
-                    done();
+                    expect(getClass(child)).toBe('fa fa-sort')
+                    expect(disableCount).toBe(1)
+                    expect(disableKey).toBe('order')
+                    done()
                 })
             })
         })
