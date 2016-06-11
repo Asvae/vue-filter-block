@@ -43,7 +43,6 @@
         },
         methods: {
             setFilters (filters){
-                console.log(filters)
                 if (!(this.name in filters)) {
                     this.value = null
                     return

@@ -31,6 +31,7 @@
                 <pre>&lt;label&gt;Check me!
     &lt;vm-three-state-checkbox-filter
         name=&quot;three-checkbox&quot;
+        :bus=&quot;filters.bus&quot;
     &gt;&lt;/vm-three-state-checkbox-filter&gt;
 &lt;/label&gt;</pre>
             </div>
@@ -44,7 +45,7 @@
                 <div class="well">
                     <vm-paginator-filter
                             :bus="filters.bus"
-                            name="page"
+                            name="page.but.surely.nested"
                             :pages="10"
                     ></vm-paginator-filter>
                 </div>
@@ -53,8 +54,9 @@
                     ignores saved state and always defaults to empty.
                 </p>
                 <pre>&lt;vm-paginator-filter
-     name=&quot;page&quot;
-     :pages=&quot;10&quot;
+    name=&quot;page.but.surely.nested&quot;
+    :pages=&quot;10&quot;
+    :bus=&quot;filters.bus&quot;
 &gt;&lt;/vm-paginator-filter&gt;</pre>
             </div>
 
@@ -79,6 +81,7 @@
                 <pre>&lt;vm-removable-input-filter
     class=&quot;form-control&quot;
     name=&quot;removable-input&quot;
+    :bus=&quot;filters.bus&quot;
 &gt;&lt;/vm-removable-input-filter&gt;</pre>
             </div>
         </div>
@@ -115,6 +118,7 @@
                 <pre>&lt;vm-wrapper-filter
     content=&quot;vm-select&quot;
     name=&quot;removable-input&quot;
+    :bus=&quot;filters.bus&quot;
 &gt;&lt;/vm-wrapper-filter&gt;</pre>
             </div>
 
@@ -126,14 +130,20 @@
                     <small><code>vm-sorting-order-filter</code></small>
                 </h4>
                 <div class="well">
-                    <vm-sorting-order-filter :bus="filters.bus" name="column-sorter">
+                    <vm-sorting-order-filter
+                            name="column-sorter"
+                            :bus="filters.bus"
+                    >
                         Sort me!
                     </vm-sorting-order-filter>
                 </div>
                 <p>
                     Your common table sorter. Unordered means no filter.
                 </p>
-                <pre>&lt;vm-sorting-order-filter name=&quot;column-sorter&quot;&gt;
+                <pre>&lt;vm-sorting-order-filter
+    name=&quot;column-sorter&quot;
+    :bus=&quot;filters.bus&quot;
+&gt;
     Sort me!
 &lt;/vm-sorting-order-filter&gt;</pre>
             </div>
