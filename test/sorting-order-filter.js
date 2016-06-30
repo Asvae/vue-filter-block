@@ -2,7 +2,6 @@ import Vue from 'vue'
 import vmSortingOrderFilter from './../components/filters/sorting-order-filter.vue'
 import $ from 'jquery'
 
-
 describe("Alert component", function () {
 
     var parent, child;
