@@ -117,7 +117,7 @@
                 </p>
                 <pre>&lt;vm-wrapper-filter
     content=&quot;vm-select&quot;
-    name=&quot;removable-input&quot;
+    name=&quot;wrapped-select&quot;
     :bus=&quot;filters.bus&quot;
 &gt;&lt;/vm-wrapper-filter&gt;</pre>
             </div>
@@ -245,12 +245,25 @@
         data() {
             return {
                 filters: {
-                    data: {}
+                    data: {},
+                    default: {'three-checkbox': false},
                 },
                 state: null,
             }
         },
         ready(){
+            this.filters.bus.$on('change', function (filters) {
+                console.log('change')
+                console.log(filters)
+            })
+            this.filters.bus.$on('disable', function (key) {
+                console.log('disable')
+                console.log(key)
+            })
+            this.filters.bus.$on('set-filters', function (filters) {
+                console.log('set-filters')
+                console.log(filters)
+            })
         },
         components: {
             vmPaginatorFilter,
