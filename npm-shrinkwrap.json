@@ -1,6 +1,6 @@
 {
   "name": "asva-vue-filters",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "dependencies": {
     "abbrev": {
       "version": "1.0.9",
