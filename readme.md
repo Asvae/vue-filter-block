@@ -68,7 +68,6 @@ You probably will also require bundling solution such as webpack or browserify.
 * 15.04.2016 (0.0.1): Initial commit.
 * 26.04.2016 (0.3.0): Add filter wrapper component.
 * 11.06.2016 (1.0.0): Add jasmine tests.
-* 01.07.2016 (1.4.0): Add filter wrapper component.
 
 ## Credits
 * **Yauheni Prakopchyk** - [Asva](https://github.com/Asvae)

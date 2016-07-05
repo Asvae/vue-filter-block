@@ -12,7 +12,6 @@ export default {
         return {
             filters: {
                 toUpdate: false,
-                default: {},
                 bus: new Vue,
             },
         }
@@ -54,7 +53,7 @@ export default {
             this.filters.bus.$emit('set-filters', this.$options.filters.data)
         },
         resetFilters () {
-            this.$options.filters.data = _.cloneDeep(this.filters.default)
+            this.$options.filters.data = {}
             this.setFilters()
             this.registerUpdate()
         },
@@ -72,8 +71,7 @@ export default {
             setTimeout(function () {
                 this.filters.toUpdate = false
                 this.saveFilters()
-                let filters = _.clone(this.$options.filters.data)
-                filters = _.defaults(filters, this.filters.default)
+                var filters = _.clone(this.$options.filters.data)
                 this.filtersFormed(filters)
             }.bind(this), this.$options.filters.timeout)
         },
