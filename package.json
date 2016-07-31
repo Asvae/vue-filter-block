@@ -1,6 +1,6 @@
 {
   "name": "asva-vue-filters",
-  "version": "1.6.0",
+  "version": "1.6.1",
   "description": "Decoupled filter block for vue.js. Mixins and example components",
   "main": "index.js",
   "scripts": {
@@ -20,15 +20,14 @@
     "karma-chrome-launcher": "^1.0.1",
     "karma-jasmine": "^1.0.2",
     "laravel-elixir": "^6.0.0-5",
-    "vue": "^1.0.21",
+    "vue": "^1.0.17",
     "vue-hot-reload-api": "^2.0.5",
     "vueify": "^8.3.9",
     "vueify-insert-css": "^1.0.0",
     "watchify": "^3.7.0",
     "laravel-elixir-browserify-official": "^0.1.2",
     "lockr": "^0.8.4",
-    "lodash": "^4.6.0",
-    "vue": "^1.0.17"
+    "lodash": "^4.6.0"
   },
   "browserify": {
     "transform": [
