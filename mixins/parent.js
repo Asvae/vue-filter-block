@@ -34,7 +34,7 @@ export default {
             })
         })
         this.filters.bus.$on('disable', function (key) {
-            delete self.$options.filters.data[key]
+            delete self.$options.filters.data[key.split('.')[0]]
             self.registerUpdate()
         })
 
